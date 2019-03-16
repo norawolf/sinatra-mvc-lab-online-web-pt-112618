@@ -21,8 +21,10 @@ class PigLatinizer
       if word.start_with?(/[aeiouAEIOU]/)
         results << word += "way"
       else word.start_with?(/[^aeiou]/)
-      #  use string[regex] to return the consonants at the beginning
+      #  use string[regex] to return a substring of the consonants at the beginning
         cons = word[/\A[bcdfghjklmnpqrstvwxyz]*/i]
+
+        #uses #string[range] method to return a substring with consants removed from beginning
         results << word[(cons.length)..-1] + cons + "ay"
       end
     end
