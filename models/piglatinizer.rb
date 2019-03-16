@@ -7,11 +7,11 @@ class PigLatinizer
   # if it's a y followed by consonant, leave it, ex: yvonne -> yvonneway
   # if it's a y followed by a vowel - move to end ex: yellow -> ellowyay
   # handle words starting with 'qu' ex: quiet -> ietquay
-  # what about apostrophes in a word --> maybe remove all punctuation?
+  # what about apostrophes or numbers in a word --> maybe remove all punctuation?
+  # remove extra whitespace
 
-  # currently handles words w vowel or X consonants, does not affect casing
+  # currently only handles words w vowel or X consonants, does not affect casing
   # currently treats Y as a consonant
-  # no edge cases yet
 
   def piglatinize(input)
     split = input.split(" ")#.map(&:downcase)
@@ -28,9 +28,7 @@ class PigLatinizer
         results << word[(cons.length)..-1] + cons + "ay"
       end
     end
-
     results.join(" ")
-
   end
 
 end
