@@ -9,12 +9,15 @@ class PigLatinizer
   # handle words starting with 'qu' ex: quiet -> ietquay
   # what about apostrophes in a word --> maybe remove all punctuation?
 
+  # currently handles words w vowel or X consonants, does not affect casing
+  # currently treats Y as a consonant
+  # no edge cases yet
+
   def piglatinize(input)
     split = input.split(" ")#.map(&:downcase)
     results = []
 
     split.each_with_index do |word, index|
-      #check the first character of each word
       if word.start_with?(/[aeiouAEIOU]/)
         results << word += "way"
       else word.start_with?(/[^aeiou]/)
